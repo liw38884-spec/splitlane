@@ -18,9 +18,9 @@ contracts/broadcast/
 !**/.env.example
 
 # Tool and editor state
+.tmp/
 .DS_Store
 Thumbs.db
 *.log
 .vscode/
 .idea/
-
