@@ -1,0 +1,13 @@
+{
+  "name": "splitlane",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "check": "npm run check:web && npm run check:attestcoin && npm run check:contracts",
+    "check:web": "npm --prefix apps/web run typecheck && npm --prefix apps/web run lint && npm --prefix apps/web test && npm --prefix apps/web run build",
+    "check:attestcoin": "npm --prefix packages/attestcoin run typecheck && npm --prefix packages/attestcoin test && npm --prefix packages/attestcoin run build",
+    "check:contracts": "forge fmt --root contracts --check && forge build --root contracts --sizes && forge test --root contracts && forge lint --root contracts",
+    "dev": "npm --prefix apps/web run dev"
+  },
+  "license": "MIT"
+}

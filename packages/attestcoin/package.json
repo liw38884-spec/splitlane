@@ -1,0 +1,45 @@
+{
+  "name": "@splitlane/attestcoin",
+  "version": "0.1.0",
+  "description": "Fail-closed Attestcoin proof lane for SplitLane Ethereum Sepolia receipts",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "splitlane-attestcoin": "./dist/bin.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "start": "tsx src/bin.ts",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": [
+    "attestcoin",
+    "creditcoin",
+    "ethereum-sepolia"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@gluwa/usc-sdk": "0.18.0",
+    "ethers": "^6.17.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}
