@@ -23,6 +23,15 @@ Recipients cannot assign a share to themselves. Every settled share represents a
 | Web dashboard | Base Sepolia, Ethereum Sepolia | Demo mode is available when a live contract address is not configured |
 | Attestcoin proof lane | Ethereum Sepolia only | Base Sepolia transactions are intentionally rejected |
 
+## Testnet deployments
+
+| Network | SplitLane contract | Deployment transaction |
+| --- | --- | --- |
+| Base Sepolia | [`0x1EE8dCEE85c5bD8bA8D21B599D08Acc3E80C0d6c`](https://sepolia.basescan.org/address/0x1EE8dCEE85c5bD8bA8D21B599D08Acc3E80C0d6c) | [`0xa2b4e8ed...6d2070e`](https://sepolia.basescan.org/tx/0xa2b4e8edc7c29865535adc6c6e221762efe2416231dc5807b4404596d6d2070e) |
+| Ethereum Sepolia | [`0x1EE8dCEE85c5bD8bA8D21B599D08Acc3E80C0d6c`](https://sepolia.etherscan.io/address/0x1EE8dCEE85c5bD8bA8D21B599D08Acc3E80C0d6c) | [`0x1e009524...77adfabd`](https://sepolia.etherscan.io/tx/0x1e0095247e4abcdb355e5e9e079572dd1fb0c4835db6d70abd28f1f077adfabd) |
+
+Both deployments were confirmed onchain and bind `USDC()` to Circle's documented token address for that network.
+
 ## Local development
 
 Install dependencies in the package you want to work on, then use the package scripts.
@@ -77,6 +86,6 @@ npm run check:contracts
 
 ## Status notes
 
-- No deployment address is recorded in this repository yet.
-- No transaction hash, demo video, or submission URL is embedded here.
+- Both supported testnet deployments and their transaction hashes are recorded above.
+- No demo video or submission URL is embedded here yet.
 - DoraHacks eligibility for pre-existing work must be confirmed by the organizer before submission.

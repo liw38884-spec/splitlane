@@ -68,9 +68,10 @@ npm run start -- chains
 
 | Item | Placeholder |
 | --- | --- |
-| Base Sepolia contract address | `[FILL IN]` |
-| Ethereum Sepolia contract address | `[FILL IN]` |
-| Ethereum Sepolia transaction hash | `[FILL IN]` |
+| Base Sepolia contract address | `0x1EE8dCEE85c5bD8bA8D21B599D08Acc3E80C0d6c` |
+| Ethereum Sepolia contract address | `0x1EE8dCEE85c5bD8bA8D21B599D08Acc3E80C0d6c` |
+| Ethereum Sepolia deployment transaction hash | `0x1e0095247e4abcdb355e5e9e079572dd1fb0c4835db6d70abd28f1f077adfabd` |
+| Ethereum Sepolia settlement transaction hash | `[FILL IN]` |
 | CC3 verification transaction hash | `[FILL IN]` |
 | Demo wallet address | `[FILL IN]` |
 | Demo video link | `[FILL IN]` |
@@ -78,5 +79,4 @@ npm run start -- chains
 ## Do not say
 
 - "Attestcoin works on Base Sepolia."
-- "The project is deployed" unless you have the real deployment artifact.
 - "The project is eligible" unless the organizer confirms the hackathon policy.

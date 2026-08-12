@@ -17,14 +17,15 @@ forge test
 forge lint
 ```
 
-## Supported testnet deployments
+## Testnet deployments
 
-Only the official Circle USDC contracts below are accepted by the deployment script:
+Only the official Circle USDC contracts below are accepted by the deployment script. Both deployments
+were confirmed onchain on August 12, 2026.
 
-| Network | Chain ID | `USDC_ADDRESS` |
-| --- | ---: | --- |
-| Base Sepolia | 84532 | `0x036CbD53842c5426634e7929541eC2318f3dCF7e` |
-| Ethereum Sepolia | 11155111 | `0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238` |
+| Network | Chain ID | `USDC_ADDRESS` | SplitLane | Deployment transaction |
+| --- | ---: | --- | --- | --- |
+| Base Sepolia | 84532 | `0x036CbD53842c5426634e7929541eC2318f3dCF7e` | [`0x1EE8...0d6c`](https://sepolia.basescan.org/address/0x1EE8dCEE85c5bD8bA8D21B599D08Acc3E80C0d6c) | [`0xa2b4...2070e`](https://sepolia.basescan.org/tx/0xa2b4e8edc7c29865535adc6c6e221762efe2416231dc5807b4404596d6d2070e) |
+| Ethereum Sepolia | 11155111 | `0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238` | [`0x1EE8...0d6c`](https://sepolia.etherscan.io/address/0x1EE8dCEE85c5bD8bA8D21B599D08Acc3E80C0d6c) | [`0x1e00...dfabd`](https://sepolia.etherscan.io/tx/0x1e0095247e4abcdb355e5e9e079572dd1fb0c4835db6d70abd28f1f077adfabd) |
 
 Deployment is an external, signing action and is not performed by the test suite. Import the deployer
 once into Foundry's encrypted keystore; the interactive command prompts for the key and keystore
@@ -46,4 +47,5 @@ forge script script/DeploySplitLane.s.sol:DeploySplitLane --rpc-url base_sepolia
 
 For Ethereum Sepolia, set `ETHEREUM_SEPOLIA_RPC_URL`, use the documented Ethereum Sepolia USDC
 address, and pass `--rpc-url ethereum_sepolia`. The script rejects every other chain and token address.
-Do not commit RPC credentials, keystore files, passwords, deployment artifacts, or transaction claims.
+Do not commit RPC credentials, keystore files, passwords, or Foundry broadcast artifacts. Publish only
+confirmed contract addresses and transaction hashes.
