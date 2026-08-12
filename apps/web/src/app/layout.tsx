@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "SplitLane | USDC group tabs",
   description: "Direct, non-custodial USDC group settlement on Base.",
   applicationName: "SplitLane",
+  other: {
+    "base:app_id": "6a7bf2b43d490b7a57a06728",
+  },
   openGraph: {
     title: "SplitLane",
     description: "Direct USDC group settlement on Base.",
