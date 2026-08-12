@@ -23,7 +23,7 @@ Only the official Circle USDC contracts below are accepted by the deployment scr
 
 | Network | Chain ID | `USDC_ADDRESS` |
 | --- | ---: | --- |
-| Base Sepolia | 84532 | `0x036CBD53842c5426634e7929541ec2318F3DCF7C` |
+| Base Sepolia | 84532 | `0x036CbD53842c5426634e7929541eC2318f3dCF7e` |
 | Ethereum Sepolia | 11155111 | `0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238` |
 
 Deployment is an external, signing action and is not performed by the test suite. Import the deployer
@@ -39,7 +39,7 @@ account at the CLI. Foundry prompts for the keystore password when it signs:
 
 ```powershell
 $env:BASE_SEPOLIA_RPC_URL = "https://your-base-sepolia-rpc"
-$env:USDC_ADDRESS = "0x036CBD53842c5426634e7929541ec2318F3DCF7C"
+$env:USDC_ADDRESS = "0x036CbD53842c5426634e7929541eC2318f3dCF7e"
 $env:DEPLOYER_ADDRESS = (cast wallet address --account splitlane-deployer)
 forge script script/DeploySplitLane.s.sol:DeploySplitLane --rpc-url base_sepolia --account splitlane-deployer --sender $env:DEPLOYER_ADDRESS --broadcast
 ```

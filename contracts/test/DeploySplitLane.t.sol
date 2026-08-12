@@ -14,8 +14,19 @@ contract DeploySplitLaneTest is Test {
     function test_ExpectedUSDCForBaseSepolia() public view {
         assertEq(
             deploymentScript.expectedUSDC(deploymentScript.BASE_SEPOLIA_CHAIN_ID()),
-            deploymentScript.BASE_SEPOLIA_USDC()
+            0x036CbD53842c5426634e7929541eC2318f3dCF7e
         );
+    }
+
+    function test_RejectsFormerTypoForBaseSepoliaUSDC() public {
+        uint256 chainId = deploymentScript.BASE_SEPOLIA_CHAIN_ID();
+        address wrongUSDC = 0x036CBD53842c5426634e7929541ec2318F3DCF7C;
+        address expectedUSDC = deploymentScript.BASE_SEPOLIA_USDC();
+
+        vm.expectRevert(
+            abi.encodeWithSelector(DeploySplitLane.UnexpectedUSDC.selector, chainId, wrongUSDC, expectedUSDC)
+        );
+        deploymentScript.validateDeployment(chainId, wrongUSDC, address(this));
     }
 
     function test_ExpectedUSDCForEthereumSepolia() public view {

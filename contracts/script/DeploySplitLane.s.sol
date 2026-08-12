@@ -8,7 +8,7 @@ contract DeploySplitLane is Script {
     uint256 public constant BASE_SEPOLIA_CHAIN_ID = 84_532;
     uint256 public constant ETHEREUM_SEPOLIA_CHAIN_ID = 11_155_111;
 
-    address public constant BASE_SEPOLIA_USDC = 0x036CBD53842c5426634e7929541ec2318F3DCF7C;
+    address public constant BASE_SEPOLIA_USDC = 0x036CbD53842c5426634e7929541eC2318f3dCF7e;
     address public constant ETHEREUM_SEPOLIA_USDC = 0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238;
 
     error UnsupportedDeploymentChain(uint256 chainId);
