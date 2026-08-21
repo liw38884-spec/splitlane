@@ -23,6 +23,8 @@ Still required for submission:
 - A real Ethereum Sepolia `payShare` transaction, RPC configuration, successful Attestcoin evidence, and a recorded demo.
 - Team identity and final DoraHacks form entry.
 
+Submission material: `docs/dorahacks-submission-draft.md` and `docs/external-submission-status.md`.
+
 Copy-ready summary:
 
 > SplitLane coordinates exact USDC group payments without pooled custody. Its Attestcoin lane verifies confirmed Ethereum Sepolia `payShare` receipts on Creditcoin CC3 and rejects unsupported chains, contracts, selectors, receipts, and mismatched proof bytes.
@@ -40,6 +42,8 @@ Still required for submission:
 
 - Export one artifact from a real tab and include the corresponding chain explorer links in the demo.
 - Add team information and a short legal-use narrative; the artifact is technical evidence, not a legal opinion or identity attestation.
+
+Submission material: `docs/legaltech-submission-draft.md`.
 
 Copy-ready summary:
 
@@ -60,6 +64,8 @@ Still required for publication:
 - Sign in with an Anna verified-developer account.
 - Push the working draft, cut an immutable version, submit it for review, and supply the final listing assets.
 
+Listing material: `docs/anna-listing.md`.
+
 Copy-ready summary:
 
 > Mention SplitLane in Anna to validate an exact group settlement plan, open the review UI, and hand the same participants and USDC amounts to a wallet-controlled onchain flow. The App labels its result as a draft until SplitLane reports public contract state.
@@ -78,6 +84,8 @@ Still required for submission:
 - Confirm event-access eligibility for the participant wallet and jurisdiction.
 - Record at least one permitted real Event Contract interaction and link its transaction; the radar itself does not claim to place trades.
 - Complete the DoraHacks form when submissions open and add the demo video.
+
+SDK/documentation feedback: `docs/dreamdex-feedback-report.md`.
 
 Copy-ready summary:
 
