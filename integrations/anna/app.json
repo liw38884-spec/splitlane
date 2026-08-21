@@ -3,5 +3,10 @@
   "slug": "splitlane",
   "tagline": "Turn a group plan into an exact USDC settlement",
   "description": "Validate a non-custodial group payment draft in Anna, then hand the exact participants and amounts to SplitLane for wallet-controlled settlement on Base or Ethereum testnet.",
-  "category": "productivity"
+  "category": "productivity",
+  "bundled_executas": {
+    "splitlane": {
+      "path": "executas/splitlane"
+    }
+  }
 }

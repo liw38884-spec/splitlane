@@ -1,0 +1,9 @@
+{
+  "$schema": "anna-executa-identity/v1",
+  "host": "https://anna.partners",
+  "executa_id": 1101,
+  "tool_id": "tool-liw38884-splitlane-rhc4cr9r",
+  "slug": "splitlane",
+  "executa_type": "tool",
+  "first_published_at": "2026-08-21T06:56:16.339Z"
+}

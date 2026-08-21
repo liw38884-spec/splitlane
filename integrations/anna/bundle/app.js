@@ -1,6 +1,6 @@
 import { AnnaAppRuntime } from "/static/anna-apps/_sdk/latest/index.js";
 
-const TOOL_ID = "tool-dev-splitlane";
+const TOOL_ID = globalThis.__ANNA_TOOL_IDS__?.splitlane ?? "tool-dev-splitlane";
 const APP_URL = "https://splitlane.vercel.app";
 const participants = document.getElementById("participants");
 const form = document.getElementById("draft-form");

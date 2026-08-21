@@ -3,7 +3,7 @@
   "permissions": ["tools.invoke", "storage.read", "storage.write"],
   "required_executas": [
     {
-      "tool_id": "tool-dev-splitlane"
+      "tool_id": "bundled:splitlane"
     }
   ],
   "tags": ["payments", "usdc", "web3", "group-settlement"],
@@ -27,7 +27,7 @@
       }
     ],
     "host_api": {
-      "tools": ["tool-dev-splitlane"],
+      "tools": ["bundled:splitlane"],
       "storage": ["get", "set"],
       "window": ["set_title", "ready"]
     },

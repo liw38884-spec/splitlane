@@ -1,0 +1,9 @@
+{
+  "slug": "splitlane",
+  "name": "SplitLane settlement draft validator",
+  "version": "0.1.0",
+  "executa_type": "tool",
+  "description": "Validate an exact USDC group settlement draft and return a wallet-controlled SplitLane handoff URL.",
+  "tool_id": "tool-dev-splitlane",
+  "type": "python"
+}
