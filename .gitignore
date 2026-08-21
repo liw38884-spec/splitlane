@@ -19,6 +19,9 @@ contracts/broadcast/
 
 # Tool and editor state
 .tmp/
+.omx/state/
+__pycache__/
+*.py[cod]
 .DS_Store
 Thumbs.db
 *.log

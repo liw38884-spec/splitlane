@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SplitLane settlement planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" type="module"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header>
+        <div class="mark" aria-hidden="true">S</div>
+        <div><span class="eyebrow">Anna App</span><h1>SplitLane planner</h1></div>
+        <span class="boundary">Wallet signs on SplitLane</span>
+      </header>
+
+      <section class="intro">
+        <h2>Prepare an exact USDC group tab</h2>
+        <p>Anna validates the plan and creates a handoff link. No private key, approval, or transaction is handled in this window.</p>
+      </section>
+
+      <form id="draft-form">
+        <label class="field">
+          <span>Public title</span>
+          <input id="title" maxlength="80" required placeholder="Team dinner" />
+        </label>
+        <div class="participant-heading"><span>Participants</span><span id="participant-count">2 / 20</span></div>
+        <div id="participants"></div>
+        <button class="secondary" id="add-participant" type="button">+ Add participant</button>
+        <footer>
+          <div><span>Total</span><strong id="total">0 USDC</strong></div>
+          <button class="primary" type="submit">Validate draft</button>
+        </footer>
+      </form>
+
+      <section class="result" id="result" hidden aria-live="polite">
+        <span class="eyebrow">Validated handoff</span>
+        <strong id="result-title"></strong>
+        <p id="result-summary"></p>
+        <a id="launch-link" target="_blank" rel="noreferrer">Review and sign in SplitLane →</a>
+      </section>
+      <p class="status" id="status">Connecting to Anna…</p>
+    </main>
+  </body>
+</html>

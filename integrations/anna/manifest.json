@@ -1,0 +1,41 @@
+{
+  "schema": 2,
+  "permissions": ["tools.invoke", "storage.read", "storage.write"],
+  "required_executas": [
+    {
+      "tool_id": "tool-dev-splitlane"
+    }
+  ],
+  "tags": ["payments", "usdc", "web3", "group-settlement"],
+  "system_prompt_addendum": "When a user wants to split a group expense, invoke create_settlement_draft to validate the exact participants and USDC amounts. Then open the SplitLane main view so the user can review the draft, connect their own wallet, and sign onchain. Never describe a draft as paid or settled until the public SplitLane contract reports it.",
+  "ui": {
+    "bundle": {
+      "format": "static-spa",
+      "entry": "index.html",
+      "external_origins": ["https://splitlane.vercel.app"]
+    },
+    "views": [
+      {
+        "name": "main",
+        "title": "SplitLane settlement planner",
+        "default": true,
+        "min_size": { "w": 480, "h": 420 },
+        "default_size": { "w": 900, "h": 720 },
+        "max_size": { "w": 1600, "h": 1200 },
+        "single_instance": true,
+        "summary_template": "SplitLane USDC settlement draft"
+      }
+    ],
+    "host_api": {
+      "tools": ["tool-dev-splitlane"],
+      "storage": ["get", "set"],
+      "window": ["set_title", "ready"]
+    },
+    "csp_overrides": {},
+    "state_merge": "last_writer_wins"
+  },
+  "dev": {
+    "seed_storage": {},
+    "user_id": 1
+  }
+}

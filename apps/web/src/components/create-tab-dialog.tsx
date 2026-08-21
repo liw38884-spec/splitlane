@@ -4,23 +4,33 @@ import { useMemo, useState } from "react";
 import { Plus, Trash2, X } from "lucide-react";
 import { getAddress, isAddress, parseUnits, type Address } from "viem";
 import { formatUsdc, shortenAddress } from "@/lib/format";
+import type { TabDraft } from "@/lib/tab-draft";
 import type { NewTabInput } from "@/lib/types";
 
 type ParticipantField = { id: number; address: string; amount: string };
 
 type CreateTabDialogProps = {
   actor?: Address;
+  initialDraft?: TabDraft;
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (input: NewTabInput) => Promise<boolean>;
 };
 
-export function CreateTabDialog({ actor, isOpen, onClose, onSubmit }: CreateTabDialogProps) {
-  const [title, setTitle] = useState("");
-  const [fields, setFields] = useState<ParticipantField[]>([
-    { id: 1, address: "", amount: "" },
-    { id: 2, address: "", amount: "" },
-  ]);
+export function CreateTabDialog({ actor, initialDraft, isOpen, onClose, onSubmit }: CreateTabDialogProps) {
+  const [title, setTitle] = useState(initialDraft?.title ?? "");
+  const [fields, setFields] = useState<ParticipantField[]>(() =>
+    initialDraft
+      ? initialDraft.participants.map((participant, index) => ({
+          id: index + 1,
+          address: participant.address,
+          amount: participant.amount,
+        }))
+      : [
+          { id: 1, address: "", amount: "" },
+          { id: 2, address: "", amount: "" },
+        ],
+  );
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 

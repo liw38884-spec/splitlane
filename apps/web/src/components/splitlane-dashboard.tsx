@@ -9,10 +9,12 @@ import { useAccount, useSwitchChain } from "wagmi";
 import { configuredBuilderCode } from "@/lib/attribution";
 import { EXPLORER_TX_URLS, NETWORK_LABELS, type SupportedChainId } from "@/lib/chains";
 import { formatDate, formatUsdc, shortenAddress } from "@/lib/format";
+import { parseTabDraft, type TabDraft } from "@/lib/tab-draft";
 import { parseTabSelection, tabPath } from "@/lib/tab-links";
 import type { ShareRecord, TabRecord } from "@/lib/types";
 import { useSplitLane } from "@/hooks/use-splitlane";
 import { CreateTabDialog } from "./create-tab-dialog";
+import { SettlementEvidence } from "./settlement-evidence";
 import { WalletControl } from "./wallet-control";
 
 const STATUS_LABELS = { open: "Open", settled: "Settled", closed: "Closed" } as const;
@@ -21,6 +23,7 @@ export function SplitLaneDashboard() {
   const [chainId, setChainId] = useState<SupportedChainId>(baseSepolia.id);
   const [selectedId, setSelectedId] = useState<bigint | null>(null);
   const [requestedTabId, setRequestedTabId] = useState<bigint | undefined>();
+  const [initialDraft, setInitialDraft] = useState<TabDraft | undefined>();
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const { isConnected } = useAccount();
   const { switchChainAsync } = useSwitchChain();
@@ -33,6 +36,11 @@ export function SplitLaneDashboard() {
       if (selection.tabId) {
         setSelectedId(selection.tabId);
         setRequestedTabId(selection.tabId);
+      }
+      const draft = parseTabDraft(window.location.search);
+      if (draft) {
+        setInitialDraft(draft);
+        setIsCreateOpen(true);
       }
     }, 0);
     return () => window.clearTimeout(timeoutId);
@@ -75,6 +83,7 @@ export function SplitLaneDashboard() {
           <span>SplitLane</span>
         </div>
         <div className="topbar-actions">
+          <a className="topbar-program-link" href="/programs">Programs</a>
           <div className="network-segment" aria-label="Settlement network">
             <button type="button" aria-pressed={chainId === baseSepolia.id} onClick={() => void selectNetwork(baseSepolia.id)}>Base</button>
             <button type="button" aria-pressed={chainId === sepolia.id} onClick={() => void selectNetwork(sepolia.id)}>Ethereum</button>
@@ -121,14 +130,14 @@ export function SplitLaneDashboard() {
             <SummaryItem icon={<Users size={17} />} label="Participants" value={String(participantCount)} />
           </div>
           {selectedTab ? (
-            <TabDetail tab={selectedTab} actor={app.actorAddress} chainId={chainId} permalink={tabPath(chainId, selectedTab.id)} onClose={() => app.closeTab(selectedTab)} onSettle={(share) => app.settleShare(selectedTab, share.participant)} />
+            <TabDetail tab={selectedTab} actor={app.actorAddress} chainId={chainId} isLive={app.isLive} permalink={tabPath(chainId, selectedTab.id)} onClose={() => app.closeTab(selectedTab)} onSettle={(share) => app.settleShare(selectedTab, share.participant)} />
           ) : (
             <div className="empty-state"><FileCheck2 size={28} aria-hidden="true" /><h2>{selectedId === null ? "No tabs yet" : "Tab not found"}</h2><button className="command-button command-button-primary" type="button" onClick={() => setIsCreateOpen(true)}><Plus size={16} /> Create tab</button></div>
           )}
         </section>
       </section>
 
-      <CreateTabDialog actor={app.actorAddress} isOpen={isCreateOpen} onClose={() => setIsCreateOpen(false)} onSubmit={app.createTab} />
+      <CreateTabDialog key={initialDraft ? JSON.stringify(initialDraft) : "blank-draft"} actor={app.actorAddress} initialDraft={initialDraft} isOpen={isCreateOpen} onClose={() => { setIsCreateOpen(false); setInitialDraft(undefined); }} onSubmit={app.createTab} />
 
       {app.transaction.stage !== "idle" ? (
         <div className={`transaction-toast toast-${app.transaction.stage}`} role="status">
@@ -146,7 +155,7 @@ function SummaryItem({ icon, label, value }: { icon: ReactNode; label: string; v
   return <div className="summary-item"><span className="summary-icon">{icon}</span><span><small>{label}</small><strong>{value}</strong></span></div>;
 }
 
-function TabDetail({ tab, actor, chainId, permalink, onClose, onSettle }: { tab: TabRecord; actor?: Address; chainId: SupportedChainId; permalink: string; onClose: () => void; onSettle: (share: ShareRecord) => void }) {
+function TabDetail({ tab, actor, chainId, isLive, permalink, onClose, onSettle }: { tab: TabRecord; actor?: Address; chainId: SupportedChainId; isLive: boolean; permalink: string; onClose: () => void; onSettle: (share: ShareRecord) => void }) {
   const paidAmount = tab.totalAmount - tab.remainingAmount;
   const progress = tab.totalAmount === 0n ? 0 : Number((paidAmount * 100n) / tab.totalAmount);
   const isRecipient = actor ? getAddress(actor) === getAddress(tab.recipient) : false;
@@ -160,7 +169,7 @@ function TabDetail({ tab, actor, chainId, permalink, onClose, onSettle }: { tab:
           <p>Recipient <strong>{shortenAddress(tab.recipient, 7, 5)}</strong></p>
         </div>
         <div className="detail-header-actions">
-          {chainId === sepolia.id ? <span className="proof-badge"><ShieldCheck size={15} />Attestcoin source</span> : <span className={`proof-badge ${configuredBuilderCode ? "proof-badge-active" : ""}`}><FileCheck2 size={15} />{configuredBuilderCode ? "Builder Code active" : "Builder Code pending"}</span>}
+          {chainId === sepolia.id ? <a className="proof-badge proof-link" href="/programs/creditcoin"><ShieldCheck size={15} />Attestcoin proof center</a> : <span className={`proof-badge ${configuredBuilderCode ? "proof-badge-active" : ""}`}><FileCheck2 size={15} />{configuredBuilderCode ? "Builder Code active" : "Builder Code pending"}</span>}
           <a className="icon-button" href={permalink} title="Open shareable tab link" aria-label="Open shareable tab link"><Link2 size={17} aria-hidden="true" /></a>
         </div>
       </header>
@@ -187,6 +196,8 @@ function TabDetail({ tab, actor, chainId, permalink, onClose, onSettle }: { tab:
           })}
         </div>
       </section>
+
+      <SettlementEvidence tab={tab} isLive={isLive} />
 
       <footer className="detail-footer">
         <div><span>Created</span><strong>{formatDate(tab.createdAt)}</strong></div>

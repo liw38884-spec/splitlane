@@ -13,6 +13,7 @@ Recipients cannot assign a share to themselves. Every settled share represents a
 | `contracts/` | Foundry contracts, tests, and deployment script |
 | `apps/web/` | Next.js dashboard for Base Sepolia and Ethereum Sepolia |
 | `packages/attestcoin/` | CC3 proof lane for Ethereum Sepolia receipts |
+| `integrations/anna/` | Anna schema-2 App bundle and settlement-draft Executa |
 | `docs/` | Delivery docs, threat model, demo script, and submission draft |
 
 ## Current chain support
@@ -22,6 +23,20 @@ Recipients cannot assign a share to themselves. Every settled share represents a
 | SplitLane contract | Base Sepolia, Ethereum Sepolia | Uses the official Circle USDC address on each chain |
 | Web dashboard | Base Sepolia, Ethereum Sepolia | Demo mode is available when a live contract address is not configured |
 | Attestcoin proof lane | Ethereum Sepolia only | Base Sepolia transactions are intentionally rejected |
+| DreamDEX event radar | Somnia mainnet | Reads binary markets and contract provenance from the official DreamDEX indexer |
+
+## Program workbench
+
+The web app exposes one reviewable route per active program:
+
+| Route | Program capability |
+| --- | --- |
+| `/programs/creditcoin` | Creates a strict, explicitly unexecuted Attestcoin proof job for a confirmed Ethereum Sepolia `payShare` transaction |
+| `/programs/legaltech` | Explains the deterministic audit record available from every live settlement tab |
+| `/programs/anna` | Documents the Anna App draft-to-wallet handoff and publication boundary |
+| `/programs/event-contracts` | Displays current and recently resolved DreamDEX binary markets with their Somnia contracts |
+
+The program adapters do not change the settlement contract. They reuse the same non-custodial tab state while keeping proof, audit, conversational planning, and event-market analytics in separate boundaries.
 
 ## Testnet deployments
 
@@ -54,6 +69,16 @@ npm run typecheck
 npm run build
 ```
 
+### Anna App bundle
+
+```powershell
+cd integrations/anna
+python -m unittest discover -s executas/splitlane -p "test_*.py"
+npx -y @anna-ai/cli@0.1.49 validate --strict --manifest manifest.json --bundle ./bundle
+```
+
+The Anna UI can prepare a draft, but the user still connects and signs in the SplitLane web app. Publishing requires a verified Anna developer account and is not performed by the local check.
+
 ### Contracts
 
 ```powershell
@@ -83,6 +108,7 @@ npm run check:contracts
 - [Base.dev and Base Rewards checklist](docs/base-dev-and-rewards-checklist.md)
 - [Demo script](docs/demo-script.md)
 - [DoraHacks submission draft](docs/dorahacks-submission-draft.md)
+- [Four-program delivery and submission notes](docs/four-program-delivery.md)
 
 ## Status notes
 
