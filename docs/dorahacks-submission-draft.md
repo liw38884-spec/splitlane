@@ -4,13 +4,13 @@ This is a copy-ready draft for the DoraHacks submission form. Replace the remain
 
 ## Eligibility note
 
-The official DoraHacks page opens submissions on 2026-08-13 and closes on 2026-09-06 at 23:59 ET. The repository started on 2026-08-11, two days before submissions open. Obtain written organizer confirmation before submitting because the published rules require original work created during the hackathon.
+The official DoraHacks page opens submissions on 2026-08-13 at 05:00 UTC. Its rendered timeline and machine-readable metadata disagree on the closing timestamp, so use the earlier machine-readable value, 2026-09-06 at 04:59 UTC, as the safe operational deadline. The repository was initialized before submissions opened. Obtain written organizer confirmation before submitting because the published rules require original work created during the hackathon.
 
-Official event page: https://dorahacks.io/hackathon/buidl-ctc-2026-fall/detail
+Official event page: https://dorahacks.io/hackathon/buidl-ctc-2026-fall
 
 ### Organizer eligibility question
 
-Send this question to `team@creditcoin.org` or the official `#buidl-ctc-qna` channel before submitting:
+This question has been sent to `team@creditcoin.org`; no reply was present when rechecked on 2026-08-22:
 
 > SplitLane's repository was initialized on August 11, 2026, two days before BUIDL CTC 2026 Fall submissions open. The testnet deployments, production configuration, connected-wallet demo flow, and Attestcoin verification work are being completed during the event window. Does this satisfy the rule that projects must be original work created during the hackathon, or must we submit a new event-only project? Repository: https://github.com/liw38884-spec/splitlane
 
@@ -71,7 +71,7 @@ SplitLane records a tab with exact shares. Each participant pays their own share
 | Ethereum deployment tx hash | `0x1e0095247e4abcdb355e5e9e079572dd1fb0c4835db6d70abd28f1f077adfabd` |
 | Demo video | `[FILL IN]` |
 | Slide deck / whitepaper | `https://github.com/liw38884-spec/splitlane/blob/main/docs/splitlane-deck.pdf` |
-| Team members | `[FILL IN]` |
+| Team | Solo architect / developer; enter legal identity only in the official form |
 | Builder Code | `bc_qgmgm02h` |
 
 ## Submission copy

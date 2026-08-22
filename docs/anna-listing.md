@@ -14,6 +14,8 @@
 
 **Support / source:** https://github.com/liw38884-spec/splitlane
 
+**Logo:** https://cdn.anna.partners/production/app-logos/191-splitlane/20260822022548_60c22b21.webp
+
 ## Short description
 
 Validate a non-custodial group payment plan in Anna, then hand the exact participants and USDC amounts to SplitLane for wallet-controlled settlement on Base or Ethereum testnet.
@@ -32,6 +34,8 @@ The Anna App never receives a private key, signs a transaction, or labels a draf
 - The result is deliberately labelled as a draft.
 - The UI bundle only invokes its declared Executa, storage, and window capabilities.
 - Local strict manifest validation and Executa unit tests pass.
+- The Cloud artifact is a self-contained static Linux x86-64 ELF; it does not depend on a host Python or shell runtime.
+- Mutable listing metadata and the 256×256 SplitLane logo are synchronized to the private draft.
 
 ## Suggested screenshots
 
@@ -39,4 +43,3 @@ The Anna App never receives a private key, signs a transaction, or labels a draf
 2. Successful draft validation and handoff link.
 3. SplitLane create-tab dialog prefilled from the Anna URL.
 4. The public `/programs/anna` trust-boundary explanation.
-

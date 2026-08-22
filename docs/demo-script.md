@@ -12,6 +12,35 @@ This script is for a short live demo or a recorded walkthrough.
 6. Show the recipient closing the tab if any balance remains.
 7. Show the Attestcoin proof lane for Ethereum Sepolia only.
 
+Use that settlement flow as the shared recording source, then cut a separate 2–3 minute video for each program. Do not submit one long video that spends most of its time on another sponsor's feature.
+
+## Program-specific cuts
+
+### Creditcoin / Attestcoin
+
+1. Show the confirmed Ethereum Sepolia `payShare` transaction.
+2. Generate the strict proof job from `/programs/creditcoin`.
+3. Run the repository `dry-run` command and show `verificationResult: true`.
+4. State the repository-date eligibility caveat; do not claim organizer approval.
+
+### BLI LegalTech
+
+1. Open the same real tab and export `splitlane.settlement-audit.v1`.
+2. Recompute the record hash and compare parties, token, contract, amounts, and status with the explorer.
+3. State that the artifact is technical evidence, not legal advice or identity proof.
+
+### Anna AI App Builder
+
+1. Open the installed SplitLane draft in Anna.
+2. Validate two participants and show the exact handoff URL.
+3. Open the prefilled SplitLane review screen and state that Anna never signs or receives a key.
+
+### Somnia × DreamDEX
+
+1. Show the Shannon chain ID and non-empty bytecode at the six explorer-linked documented addresses.
+2. State that this is read-only testnet deployment verification, not trade evidence.
+3. Show one live production-indexer market and its exact market/pool provenance.
+
 ## Suggested talk track
 
 ### 1. Problem

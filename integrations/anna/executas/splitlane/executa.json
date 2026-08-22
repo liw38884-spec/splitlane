@@ -5,5 +5,16 @@
   "executa_type": "tool",
   "description": "Validate an exact USDC group settlement draft and return a wallet-controlled SplitLane handoff URL.",
   "tool_id": "tool-dev-splitlane",
-  "type": "python"
+  "type": "python",
+  "distribution": {
+    "type": "binary",
+    "executable_name": "splitlane",
+    "supports_protocol": true,
+    "binary_artifacts": {
+      "linux-x86_64": {
+        "path": "dist/splitlane-{version}-linux-x86_64.tar.gz",
+        "entrypoint": "splitlane"
+      }
+    }
+  }
 }

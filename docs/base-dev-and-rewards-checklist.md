@@ -22,9 +22,9 @@ Use this checklist before you call the project "Base-ready".
 
 ## Base Rewards checklist
 
-- [ ] Confirm the current Base Rewards program rules for this submission window.
+- [x] Confirm the current Base Rewards program rules for this submission window.
 - [ ] Confirm the project satisfies any required activity, chain, or submission criteria.
-- [ ] Confirm the reward submission accepts this project's current status and chain support.
+- [x] Confirm there is no standalone automatic rewards claim form: Base Dashboard verification and Builder Code attribution feed partner programs, competitions, and weekly Builder Rewards opportunities.
 - [x] Keep proof of the exact Base Sepolia deployment and tx hash ready for review.
 - [ ] Record the live demo flow for review.
 
@@ -37,7 +37,16 @@ Use this checklist before you call the project "Base-ready".
 | Builder Code | `bc_qgmgm02h` |
 | App screenshot | `[FILL IN]` |
 | Demo video | `[FILL IN]` |
-| Reward submission URL | `[FILL IN]` |
+| Current funding/rewards route | [Base Get Funded](https://www.base.org/get-funded) |
+
+## Current official interpretation
+
+Checked on 2026-08-22 against [Base Rewards](https://docs.base.org/apps/growth/rewards), [Builder Codes](https://docs.base.org/apps/builder-codes/builder-codes), and [Get Funded](https://docs.base.org/get-started/get-funded).
+
+- Base Dashboard is the current name for Base.dev.
+- The app should be verified with its builder address and keep Builder Code attribution enabled.
+- The public Get Funded page describes a weekly 2 ETH Builder Rewards pool and accepts prototypes; eligibility still depends on current activity and campaign review.
+- Builder Code attribution is supporting evidence, not proof that a reward was earned or that a separate Base hackathon submission was accepted.
 
 ## Do not claim
 

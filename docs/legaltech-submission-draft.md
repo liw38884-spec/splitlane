@@ -1,6 +1,8 @@
 # BLI Legal Tech Hackathon 2 submission draft
 
-Official event: https://dorahacks.io/hackathon/legal-hack-2026/detail
+Official event: https://dorahacks.io/hackathon/legal-hack-2026
+
+The current event metadata does not expose an enabled submission form. Keep this draft ready, but do not claim that it has been submitted until the organizer provides the live submission route.
 
 ## Project
 
@@ -45,4 +47,3 @@ Demo tabs are deliberately ineligible for evidence export.
 - Do not call the record legal advice or proof of identity.
 - Do not call an unpaid or closed-with-balance tab settled.
 - Add the real team identity and demo-video URL only in the official form.
-

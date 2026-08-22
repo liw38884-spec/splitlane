@@ -2,6 +2,10 @@ import { ArrowUpRight, Clock3, Radar } from "lucide-react";
 import type { Metadata } from "next";
 import { ProgramHeader } from "@/components/program-header";
 import { eventTradingUrl, fetchDreamDexEventMarkets, type DreamDexEventMarket } from "@/lib/dreamdex-events";
+import {
+  fetchDreamDexShannonVerification,
+  type DreamDexShannonContractVerification,
+} from "@/lib/dreamdex-shannon";
 import { shortenAddress } from "@/lib/format";
 
 export const revalidate = 10;
@@ -53,7 +57,37 @@ function EventMarketCard({ market }: { market: DreamDexEventMarket }) {
   );
 }
 
+function DeploymentVerificationCard({ contract }: { contract: DreamDexShannonContractVerification }) {
+  return (
+    <article className="event-card deployment-card">
+      <div className="event-card-heading">
+        <span className={`event-status event-status-${contract.status}`}>{contract.status}</span>
+        <span>Shannon explorer</span>
+      </div>
+      <h2>{contract.name}</h2>
+      <dl className="deployment-meta">
+        <div>
+          <dt>Contract</dt>
+          <dd>{shortenAddress(contract.address)}</dd>
+        </div>
+        <div>
+          <dt>Verification</dt>
+          <dd>{contract.detail}</dd>
+        </div>
+      </dl>
+      <div className="event-contract-links">
+        <a href={contract.explorerUrl} target="_blank" rel="noreferrer">
+          {contract.address}
+          <ArrowUpRight size={13} />
+        </a>
+      </div>
+    </article>
+  );
+}
+
 export default async function EventContractsPage() {
+  const shannonVerification = await fetchDreamDexShannonVerification();
+
   let markets: DreamDexEventMarket[] = [];
   let error: string | undefined;
   try {
@@ -73,6 +107,34 @@ export default async function EventContractsPage() {
         <h1>Event Contract Radar</h1>
         <p>Follow the current BTC and ETH fixed-window binary markets, then inspect the exact market and pool contracts before trading.</p>
         <div className="provenance-line"><Radar size={16} /><span>Live GraphQL provenance</span><Clock3 size={16} /><span>10-second refresh cache</span></div>
+      </section>
+
+      <section className="program-section">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">Somnia Shannon testnet</span>
+            <h2>Read-only bytecode presence check</h2>
+          </div>
+          <span>Expected chain ID 50312 · 0xc488</span>
+        </div>
+        <p className="deployment-copy">
+          This check uses read-only JSON-RPC against the Shannon endpoint to confirm the network ID and non-empty bytecode at addresses published in the DreamDEX documentation. It does not prove contract implementation identity, version, trade, order, or settlement activity.
+        </p>
+        <div className="provenance-line">
+          <Radar size={16} />
+          <span>{shannonVerification.rpcUrl}</span>
+          <Clock3 size={16} />
+          <span>{shannonVerification.summary === "all-present" ? "Bytecode present at all listed addresses" : "Fail-closed bytecode check"}</span>
+        </div>
+        <section className={`program-notice ${shannonVerification.summary === "all-present" ? "program-notice-neutral" : ""}`}>
+          <strong>{shannonVerification.network}</strong>
+          <span>{shannonVerification.detail}</span>
+        </section>
+        <div className="event-grid deployment-grid">
+          {shannonVerification.contracts.map((contract) => (
+            <DeploymentVerificationCard contract={contract} key={contract.address} />
+          ))}
+        </div>
       </section>
 
       {error ? <section className="program-notice"><strong>Live source temporarily unavailable.</strong><span>{error}</span></section> : null}

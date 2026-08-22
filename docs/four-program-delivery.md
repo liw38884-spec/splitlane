@@ -19,7 +19,7 @@ Delivered:
 
 Still required for submission:
 
-- Written organizer confirmation about the repository start date.
+- Written organizer confirmation that the pre-opening repository history is eligible. Without it, the public project-creation rule is not met and the entry must not be submitted as eligible.
 - A real Ethereum Sepolia `payShare` transaction, RPC configuration, successful Attestcoin evidence, and a recorded demo.
 - Team identity and final DoraHacks form entry.
 
@@ -42,6 +42,7 @@ Still required for submission:
 
 - Export one artifact from a real tab and include the corresponding chain explorer links in the demo.
 - Add team information and a short legal-use narrative; the artifact is technical evidence, not a legal opinion or identity attestation.
+- Obtain the organizer's submission route. The current DoraHacks event metadata does not expose an enabled submission form.
 
 Submission material: `docs/legaltech-submission-draft.md`.
 
@@ -58,11 +59,13 @@ Delivered:
 - The Executa validates 1–20 unique EVM participants, an 80-byte title, positive USDC amounts with at most 6 decimals, and a supported target network.
 - The result is a draft-only URL. SplitLane parses the same participants and amounts into its create-tab dialog; Anna never receives a private key or signs a transaction.
 - Official `anna-app validate --strict` and Executa unit tests pass locally.
+- The private Anna working draft is revision 1 with bundle status `ready`; its self-contained static Linux x86-64 artifact has SHA-256 `c5c5b036544f5ddc98d48651854dfb06dda7fa8ec4141087b3d38b2d46407d09`.
 
 Still required for publication:
 
-- Sign in with an Anna verified-developer account.
-- Push the working draft, cut an immutable version, submit it for review, and supply the final listing assets.
+- Install the current private draft and pass a real Anna Cloud Executa run.
+- Cut an immutable version, submit it for Anna review, and supply the final listing assets. Release is a separate public action after approval.
+- Submit the DoraHacks Anna entry after its scheduled 2026-08-31 21:00 opening.
 
 Listing material: `docs/anna-listing.md`.
 
@@ -78,12 +81,12 @@ Delivered:
 - The radar filters binary markets and exposes live/recent status, asset, window, expiry, volume, trade count, last price, and exact Somnia market/pool addresses.
 - Each card links to the Somnia explorer and the matching DreamDEX BTC/ETH 15-minute or 1-hour venue.
 - Upstream data is schema-validated and malformed indexer responses fail closed.
+- A separate Shannon testnet check reads chain ID `50312` and confirms non-empty bytecode at the six addresses published in the DreamDEX documentation. It fails closed per address and does not claim implementation identity, version, or a trade.
 
 Still required for submission:
 
-- Confirm event-access eligibility for the participant wallet and jurisdiction.
-- Record at least one permitted real Event Contract interaction and link its transaction; the radar itself does not claim to place trades.
-- Complete the DoraHacks form when submissions open and add the demo video.
+- Record a 2–3 minute demo and keep the radar's read-only evidence distinct from a trade.
+- Complete the DoraHacks form after 2026-08-25 00:00 UTC with the required Telegram handle, location, and prize wallet fields.
 
 SDK/documentation feedback: `docs/dreamdex-feedback-report.md`.
 
