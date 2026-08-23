@@ -24,12 +24,12 @@ The public listing schedules submissions from 2026-08-31 at 21:00 through 2026-1
 - Repository: https://github.com/liw38884-spec/splitlane
 - Listing copy: https://github.com/liw38884-spec/splitlane/blob/main/docs/anna-listing.md
 
-## Evidence required before submission
+## Evidence status
 
-- Successful Anna Cloud run of the installed working draft.
-- Immutable Anna version and review status.
-- Marketplace screenshots that match the reviewed behavior.
-- Demo video URL.
+- Completed: installed private App `0.1.2`, immutable Executa `0.3.1`, and a successful Anna Cloud run with two participants totaling 20 USDC.
+- Required: Anna review status for App `0.1.2`.
+- Required: marketplace screenshots that match the reviewed behavior.
+- Required: demo video URL.
 
 ## Submission copy
 

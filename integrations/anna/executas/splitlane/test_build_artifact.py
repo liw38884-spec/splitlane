@@ -1,3 +1,4 @@
+import json
 import tarfile
 import unittest
 from hashlib import sha256
@@ -11,9 +12,9 @@ class AnnaArtifactTests(unittest.TestCase):
         artifact = build()
         with tarfile.open(artifact, "r:gz") as archive:
             members = {member.name: member for member in archive.getmembers()}
-            self.assertEqual(set(members), {"splitlane"})
-            self.assertEqual(members["splitlane"].mode, 0o755)
-            executable = archive.extractfile("splitlane")
+            self.assertEqual(set(members), {"bin/splitlane", "manifest.json"})
+            self.assertEqual(members["bin/splitlane"].mode, 0o755)
+            executable = archive.extractfile("bin/splitlane")
             self.assertIsNotNone(executable)
             binary = executable.read()
             self.assertEqual(binary[:4], b"\x7fELF")
@@ -28,6 +29,14 @@ class AnnaArtifactTests(unittest.TestCase):
                 for index in range(program_header_count)
             }
             self.assertNotIn(3, program_header_types)  # PT_INTERP: no dynamic loader dependency
+
+            packaged_manifest = archive.extractfile("manifest.json")
+            self.assertIsNotNone(packaged_manifest)
+            manifest = json.load(packaged_manifest)
+            self.assertEqual(manifest["name"], "tool-liw38884-splitlane-rhc4cr9r")
+            self.assertEqual(manifest["version"], "0.3.1")
+            self.assertEqual(manifest["runtime"]["binary"]["entrypoint"]["default"], "bin/splitlane")
+            self.assertEqual(manifest["runtime"]["binary"]["permissions"]["bin/splitlane"], "0o755")
 
         first_hash = sha256(artifact.read_bytes()).hexdigest()
         self.assertEqual(first_hash, sha256(build().read_bytes()).hexdigest())

@@ -55,16 +55,17 @@ Copy-ready summary:
 Delivered:
 
 - `integrations/anna/manifest.json` is a schema-2 installable App declaration.
-- The static SPA calls a bundled `tool-dev-splitlane` Executa inside the official Anna harness.
+- The static SPA calls the bundled server-minted `tool-liw38884-splitlane-rhc4cr9r` Executa inside Anna.
 - The Executa validates 1–20 unique EVM participants, an 80-byte title, positive USDC amounts with at most 6 decimals, and a supported target network.
 - The result is a draft-only URL. SplitLane parses the same participants and amounts into its create-tab dialog; Anna never receives a private key or signs a transaction.
 - Official `anna-app validate --strict` and Executa unit tests pass locally.
-- The private Anna working draft is revision 1 with bundle status `ready`; its self-contained static Linux x86-64 artifact has SHA-256 `c5c5b036544f5ddc98d48651854dfb06dda7fa8ec4141087b3d38b2d46407d09`.
+- Private App `0.1.2` freezes Executa `0.3.1`; its deterministic static Linux x86-64 artifact has SHA-256 `98b64714ea95aff9adb0c02e66dc58c05efce8638bea3fc0e8b55c3dcbac9379`.
+- The installed Cloud Agent E2E validates `Anna E2E draft` with two participants totaling `20 USDC` and returns the exact Base Sepolia SplitLane handoff URL.
 
 Still required for publication:
 
-- Install the current private draft and pass a real Anna Cloud Executa run.
-- Cut an immutable version, submit it for Anna review, and supply the final listing assets. Release is a separate public action after approval.
+- Capture final listing screenshots and the 2–3 minute demo video.
+- Submit App `0.1.2` for Anna review when authorized. Release is a separate public action after approval.
 - Submit the DoraHacks Anna entry after its scheduled 2026-08-31 21:00 opening.
 
 Listing material: `docs/anna-listing.md`.

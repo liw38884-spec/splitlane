@@ -3,30 +3,16 @@ use std::env;
 use std::io::{self, BufRead, Write};
 
 const MANIFEST_JSON: &str = r#"{
-  "name":"tool-dev-splitlane",
-  "version":"0.1.0",
+  "name":"tool-liw38884-splitlane-rhc4cr9r",
+  "version":"0.3.1",
   "tools":[{
     "name":"create_settlement_draft",
     "description":"Validate a 1-20 participant USDC split and return a SplitLane wallet-handoff URL. This creates a draft only; it does not sign, pay, or claim settlement.",
-    "parameters":{
-      "type":"object",
-      "required":["title","participants"],
-      "additionalProperties":false,
-      "properties":{
-        "title":{"type":"string","minLength":1,"maxLength":80},
-        "network":{"type":"string","enum":["base-sepolia","ethereum-sepolia"],"default":"base-sepolia"},
-        "participants":{
-          "type":"array","minItems":1,"maxItems":20,
-          "items":{
-            "type":"object","required":["address","amount"],"additionalProperties":false,
-            "properties":{
-              "address":{"type":"string","pattern":"^0x[0-9a-fA-F]{40}$"},
-              "amount":{"type":"string","pattern":"^\\d+(?:\\.\\d{1,6})?$"}
-            }
-          }
-        }
-      }
-    }
+    "parameters":[
+      {"name":"title","type":"string","description":"Settlement title (1-80 UTF-8 bytes).","required":true},
+      {"name":"network","type":"string","description":"SplitLane test network.","required":false,"default":"base-sepolia","enum":["base-sepolia","ethereum-sepolia"]},
+      {"name":"participants","type":"array","items":{"type":"object"},"description":"One to twenty objects with unique EVM address and positive USDC amount fields.","required":true}
+    ]
   }]
 }"#;
 
@@ -633,6 +619,40 @@ mod tests {
         format!(
             r#"{{"jsonrpc":"2.0","id":7,"method":"invoke","params":{{"tool":"create_settlement_draft","arguments":{{"title":"{title}","network":"ethereum-sepolia","participants":[{{"address":"0x1111111111111111111111111111111111111111","amount":"12.340000"}},{{"address":"0x2222222222222222222222222222222222222222","amount":"7.66"}}]}}}}}}"#
         )
+    }
+
+    #[test]
+    fn describe_uses_protocol_native_parameter_records() {
+        let manifest = parse_json(MANIFEST_JSON).expect("valid manifest JSON");
+        assert_eq!(
+            manifest.get("name").and_then(Json::as_str),
+            Some("tool-liw38884-splitlane-rhc4cr9r")
+        );
+        assert_eq!(
+            manifest.get("version").and_then(Json::as_str),
+            Some("0.3.1")
+        );
+        let tools = manifest
+            .get("tools")
+            .and_then(Json::as_array)
+            .expect("tools array");
+        let parameters = tools[0]
+            .get("parameters")
+            .and_then(Json::as_array)
+            .expect("protocol-native parameter array");
+        assert_eq!(parameters.len(), 3);
+        assert_eq!(
+            parameters[0].get("name").and_then(Json::as_str),
+            Some("title")
+        );
+        assert_eq!(
+            parameters[1].get("name").and_then(Json::as_str),
+            Some("network")
+        );
+        assert_eq!(
+            parameters[2].get("name").and_then(Json::as_str),
+            Some("participants")
+        );
     }
 
     #[test]

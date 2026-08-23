@@ -13,35 +13,35 @@ ADDRESS_PATTERN = re.compile(r"^0x[0-9a-fA-F]{40}$")
 AMOUNT_PATTERN = re.compile(r"^\d+(?:\.\d{1,6})?$")
 
 MANIFEST = {
-    "name": "tool-dev-splitlane",
-    "version": "0.1.0",
+    "name": "tool-liw38884-splitlane-rhc4cr9r",
+    "version": "0.3.1",
     "tools": [
         {
             "name": "create_settlement_draft",
             "description": "Validate a 1-20 participant USDC split and return a SplitLane wallet-handoff URL. This creates a draft only; it does not sign, pay, or claim settlement.",
-            "parameters": {
-                "type": "object",
-                "required": ["title", "participants"],
-                "additionalProperties": False,
-                "properties": {
-                    "title": {"type": "string", "minLength": 1, "maxLength": 80},
-                    "network": {"type": "string", "enum": ["base-sepolia", "ethereum-sepolia"], "default": "base-sepolia"},
-                    "participants": {
-                        "type": "array",
-                        "minItems": 1,
-                        "maxItems": 20,
-                        "items": {
-                            "type": "object",
-                            "required": ["address", "amount"],
-                            "additionalProperties": False,
-                            "properties": {
-                                "address": {"type": "string", "pattern": "^0x[0-9a-fA-F]{40}$"},
-                                "amount": {"type": "string", "pattern": "^\\d+(?:\\.\\d{1,6})?$"},
-                            },
-                        },
-                    },
+            "parameters": [
+                {
+                    "name": "title",
+                    "type": "string",
+                    "description": "Settlement title (1-80 UTF-8 bytes).",
+                    "required": True,
                 },
-            },
+                {
+                    "name": "network",
+                    "type": "string",
+                    "description": "SplitLane test network.",
+                    "required": False,
+                    "default": "base-sepolia",
+                    "enum": ["base-sepolia", "ethereum-sepolia"],
+                },
+                {
+                    "name": "participants",
+                    "type": "array",
+                    "items": {"type": "object"},
+                    "description": "One to twenty objects with unique EVM address and positive USDC amount fields.",
+                    "required": True,
+                },
+            ],
         }
     ],
 }

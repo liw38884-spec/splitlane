@@ -12,4 +12,4 @@ npx -y @anna-ai/cli@0.1.49 dev --manifest manifest.json --bundle ./bundle
 
 The manifest references `bundled:splitlane`, which maps to `executas/splitlane` in `app.json`. The CLI substitutes the server-minted tool ID during push while retaining `tool-dev-splitlane` as the local-development fallback.
 
-The working draft can be pushed after authentication. Cutting an immutable version and submitting it for external review remain intentional, separately authorized release steps.
+Private App `0.1.2` freezes Executa `0.3.1` and has passed a real Anna Cloud Agent draft validation. Review submission and public release remain intentional, separately authorized lifecycle steps.

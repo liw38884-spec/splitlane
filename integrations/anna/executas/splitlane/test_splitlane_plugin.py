@@ -1,10 +1,17 @@
 import unittest
 from urllib.parse import parse_qs, urlparse
 
-from splitlane_plugin import create_draft, invoke
+from splitlane_plugin import MANIFEST, create_draft, invoke
 
 
 class SplitLaneDraftTests(unittest.TestCase):
+    def test_describe_uses_protocol_native_parameter_array(self):
+        tool = MANIFEST["tools"][0]
+        self.assertEqual(MANIFEST["version"], "0.3.1")
+        self.assertIsInstance(tool["parameters"], list)
+        self.assertEqual([parameter["name"] for parameter in tool["parameters"]], ["title", "network", "participants"])
+        self.assertEqual(tool["parameters"][2]["items"], {"type": "object"})
+
     def test_creates_exact_wallet_handoff(self):
         draft = create_draft({
             "title": "Anna dinner",
