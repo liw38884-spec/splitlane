@@ -65,7 +65,7 @@ Delivered:
 Still required for publication:
 
 - Capture final listing screenshots and the 2–3 minute demo video.
-- Submit App `0.1.2` for Anna review when authorized. Release is a separate public action after approval.
+- Await the Anna admin decision for the submitted App `0.1.2` review candidate. Release is a separate public action after approval.
 - Submit the DoraHacks Anna entry after its scheduled 2026-08-31 21:00 opening.
 
 Listing material: `docs/anna-listing.md`.

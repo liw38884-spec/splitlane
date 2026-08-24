@@ -27,7 +27,8 @@ The public listing schedules submissions from 2026-08-31 at 21:00 through 2026-1
 ## Evidence status
 
 - Completed: installed private App `0.1.2`, immutable Executa `0.3.1`, and a successful Anna Cloud run with two participants totaling 20 USDC.
-- Required: Anna review status for App `0.1.2`.
+- Completed: App `0.1.2` is pinned as the `pending_review` candidate.
+- Required: Anna admin approval and, only after separate authorization, public release.
 - Required: marketplace screenshots that match the reviewed behavior.
 - Required: demo video URL.
 
